@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { nanoid } from "nanoid";
-
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [coins, setCoins] = useState([]);
@@ -26,7 +24,7 @@ function App() {
       ) : (
         <select>
           {coins.map((coin) => (
-            <option key={nanoid()}>
+            <option key={coin.id}>
               {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} (USD)
             </option>
           ))}
