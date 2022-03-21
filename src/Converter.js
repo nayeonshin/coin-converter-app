@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Converter = ({ coins }) => {
   const [amount, setAmount] = useState(0);
