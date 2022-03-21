@@ -1,3 +1,3 @@
-# Coin Tracker App
+# Coin Converter App
 
-Coin Tracker App is a simple ReactJS app that lets you convert USD to cryptocurrencies.
+Coin Converter App is a simple ReactJS app that lets you convert USD to cryptocurrencies.
