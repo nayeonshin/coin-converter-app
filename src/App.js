@@ -6,15 +6,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [coins, setCoins] = useState([]);
 
+  const getCoins = async () => {
+    const response = await fetch("https://api.coinpaprika.com/v1/tickers");
+    const json = await response.json();
+
+    setCoins(json);
+    setIsLoading((current) => !current);
+  };
+
   useEffect(() => {
-    const getCoins = async () => {
-      const response = await fetch("https://api.coinpaprika.com/v1/tickers");
-      const json = await response.json();
-
-      setCoins(json);
-      setIsLoading((current) => !current);
-    };
-
     getCoins();
   }, []);
 
