@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 
 const Converter = ({ coins }) => {
   const [amount, setAmount] = useState(0);
@@ -14,6 +14,20 @@ const Converter = ({ coins }) => {
     },
   } = coins[value];
 
+  const CoinOptions = () => {
+    return (
+      <select onChange={onSelect}>
+        {coins.map((coin, index) => (
+          <option key={coin.id} value={index}>
+            {coin.name} ({symbol}): ${price} (USD)
+          </option>
+        ))}
+      </select>
+    );
+  };
+
+  const MemoizedCoinOptions = memo(CoinOptions);
+
   return (
     <>
       <input
@@ -26,13 +40,7 @@ const Converter = ({ coins }) => {
       <h3>
         ~{Math.round(amount / price)} {symbol}
       </h3>
-      <select onChange={onSelect}>
-        {coins.map((coin, index) => (
-          <option key={coin.id} value={index}>
-            {coin.name} ({symbol}): ${price} (USD)
-          </option>
-        ))}
-      </select>
+      <MemoizedCoinOptions />
     </>
   );
 };
